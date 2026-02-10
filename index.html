@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dla Angeliki ❤️</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe6e6;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #d63384;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .yes-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .no-button {
+            background-color: #f44336;
+            color: white;
+        }
+        .gif_container img {
+            max-width: 250px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="question">Angelika, czy zostaniesz walentynką Alifa?</h1>
+        <div class="gif_container">
+            <img id="main-gif" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">
+        </div>
+        <div class="buttons">
+            <button class="yes-button" id="yesBtn" onclick="handleYesClick()">Tak</button>
+            <button class="no-button" id="noBtn" onclick="handleNoClick()">Nie</button>
+        </div>
+    </div>
+
+    <script>
+        let noCount = 0;
+        // Pesan melas dalam Bahasa Polandia
+        const messages = [
+            "Nie",
+            "Jesteś pewna?",
+            "Angelika, proszę...",
+            "Alif będzie smutny :(",
+            "Na pewno nie?",
+            "Złamiesz mi serce...",
+            "POWIEDZ TAK!"
+        ];
+
+        function handleNoClick() {
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            
+            noBtn.innerText = messages[Math.min(noCount, messages.length - 1)];
+            noCount++;
+
+            const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+            yesBtn.style.fontSize = (currentSize * 1.5) + 'px';
+            yesBtn.style.padding = (parseFloat(window.getComputedStyle(yesBtn).padding) * 1.2) + 'px';
+        }
+
+        function handleYesClick() {
+            document.getElementById('question').innerText = "Jeeej! Do zobaczenia w Walentynki, Angelika! ❤️";
+            document.getElementById('main-gif').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2Zic3B0YnlubXN4eXN6eXN6eXN6eXN6eXN6eXN6eXN6eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lTQF0ODLLjhza/giphy.gif";
+            document.querySelector('.buttons').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
